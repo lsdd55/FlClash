@@ -1,6 +1,11 @@
 <div align=center>
 
-[![Release Downloads](https://img.shields.io/github/downloads/chen08209/FlClash/vVERSION/total?style=flat-square&logo=github)](https://img.shields.io/github/downloads/chen08209/FlClash/vVERSION/)
+[![Release Downloads](https://img.shields.io/github/downloads/lsdd55/FlClash/vVERSION/total?style=flat-square&logo=github)](https://img.shields.io/github/downloads/lsdd55/FlClash/vVERSION/)
+
+**第三方构建版 · 新增 `socks5s` 协议支持**
+
+本构建基于 [chen08209/FlClash](https://github.com/chen08209/FlClash)，内核替换为带 `socks5s` 协议实现的分支。
+未获上游作者背书的非官方构建，问题请反馈到本仓库，不要提交到上游。
 
 </div>
 
@@ -18,31 +23,16 @@
         <tr>
         <td>Android</td>
             <td>
-                <a href="https://github.com/chen08209/FlClash/releases/download/vVERSION/FlClash-VERSION-android-arm64-v8a.apk"><img src="https://img.shields.io/badge/APK-ARMv8-168039.svg?logo=android"></a><br>
-                <a href="https://github.com/chen08209/FlClash/releases/download/vVERSION/FlClash-VERSION-android-armeabi-v7a.apk"><img src="https://img.shields.io/badge/APK-ARMv7-45bf55.svg?logo=android"></a><br>
-                <a href="https://github.com/chen08209/FlClash/releases/download/vVERSION/FlClash-VERSION-android-x86_64.apk"><img src="https://img.shields.io/badge/APK-x64-96ed89.svg?logo=android"></a>
+                <a href="https://github.com/lsdd55/FlClash/releases/download/vVERSION/FlClash-VERSION-android-arm64-v8a.apk"><img src="https://img.shields.io/badge/APK-ARMv8-168039.svg?logo=android"></a><br>
+                <a href="https://github.com/lsdd55/FlClash/releases/download/vVERSION/FlClash-VERSION-android-armeabi-v7a.apk"><img src="https://img.shields.io/badge/APK-ARMv7-45bf55.svg?logo=android"></a><br>
+                <a href="https://github.com/lsdd55/FlClash/releases/download/vVERSION/FlClash-VERSION-android-x86_64.apk"><img src="https://img.shields.io/badge/APK-x64-96ed89.svg?logo=android"></a>
             </td>
         </tr>
         <tr>
             <td>Windows</td>
             <td>
-                <a href="https://github.com/chen08209/FlClash/releases/download/vVERSION/FlClash-VERSION-windows-amd64-setup.exe"><img src="https://img.shields.io/badge/Setup-x64-2d7d9a.svg?logo=windows"></a><br>
-                <a href="https://github.com/chen08209/FlClash/releases/download/vVERSION/FlClash-VERSION-windows-amd64.zip"><img src="https://img.shields.io/badge/Portable-x64-67b7d1.svg?logo=windows"></a>
-            </td>
-        </tr>
-        <tr>
-            <td>macOS</td>
-            <td>
-                <a href="https://github.com/chen08209/FlClash/releases/download/vVERSION/FlClash-VERSION-macos-arm64.dmg"><img src="https://img.shields.io/badge/DMG-Apple%20Silicon-%23000000.svg?logo=apple"></a><br>
-                <a href="https://github.com/chen08209/FlClash/releases/download/vVERSION/FlClash-VERSION-macos-amd64.dmg"><img src="https://img.shields.io/badge/DMG-Intel%20X64-%2300A9E0.svg?logo=apple"></a><br>
-            </td>
-        </tr>
-        <tr>
-            <td>Linux</td>
-            <td>
-                <a href="https://github.com/chen08209/FlClash/releases/download/vVERSION/FlClash-VERSION-linux-amd64.AppImage"><img src="https://img.shields.io/badge/AppImage-x64-f84e29.svg?logo=linux"> </a><br>
-                <a href="https://github.com/chen08209/FlClash/releases/download/vVERSION/FlClash-VERSION-linux-amd64.deb"><img src="https://img.shields.io/badge/DebPackage-x64-FF9966.svg?logo=debian"> </a><br>
-                <a href="https://github.com/chen08209/FlClash/releases/download/vVERSION/FlClash-VERSION-linux-amd64.rpm"><img src="https://img.shields.io/badge/RpmPackage-x64-F1B42F.svg?logo=redhat"> </a>
+                <a href="https://github.com/lsdd55/FlClash/releases/download/vVERSION/FlClash-VERSION-windows-amd64-setup.exe"><img src="https://img.shields.io/badge/Setup-x64-2d7d9a.svg?logo=windows"></a><br>
+                <a href="https://github.com/lsdd55/FlClash/releases/download/vVERSION/FlClash-VERSION-windows-amd64.zip"><img src="https://img.shields.io/badge/Portable-x64-67b7d1.svg?logo=windows"></a>
             </td>
         </tr>
     </tbody>
@@ -53,6 +43,19 @@
 
 <div dir="ltr">
 
-**List of all changes:** [ChangeLog](https://github.com/chen08209/FlClash/blob/main/CHANGELOG.md)
+**新增：`socks5s` 代理协议**
+
+```yaml
+proxies:
+  - name: socks5s-node
+    type: socks5s
+    server: 1.2.3.4
+    port: 62330
+    encryption: mlkem768x25519.native.<base64url>
+```
+
+`encryption` 为服务端下发的凭据，三段式结构：算法、模式、Base64URL 编码的公钥/种子。
+
+**List of all changes:** [ChangeLog](https://github.com/lsdd55/FlClash/blob/main/CHANGELOG.md)
 
 </div>

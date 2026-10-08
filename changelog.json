@@ -2,6 +2,34 @@
   "schemaVersion": 2,
   "versions": [
     {
+      "version": "0.8.99-socks5s.1",
+      "tag": "v0.8.99-socks5s.1",
+      "date": "2026-10-03",
+      "prerelease": true,
+      "groups": [
+        {
+          "type": "feat",
+          "entries": [
+            {
+              "id": "a1f0001",
+              "scope": "core",
+              "text": "Add the socks5s proxy protocol"
+            },
+            {
+              "id": "a1f0002",
+              "scope": "editor",
+              "text": "Recognise socks5s in the config editor schema"
+            },
+            {
+              "id": "a1f0003",
+              "scope": "config",
+              "text": "Accept socks5s in the custom proxy type list"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "version": "0.8.99",
       "tag": "v0.8.99",
       "date": "2026-10-03",

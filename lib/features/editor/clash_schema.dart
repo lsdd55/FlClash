@@ -259,6 +259,7 @@ const _proxyTypes = [
   'tuic',
   'wireguard',
   'socks5',
+  'socks5s',
   'http',
   'snell',
   'ssh',
@@ -530,6 +531,9 @@ const _proxyVariants = <String, Map<String, YamlSchema>>{
     'tls': _bool,
     'fingerprint': _str,
     'skip-cert-verify': _bool,
+  },
+  'socks5s': {
+    'encryption': _str,
   },
   'http': {
     'username': _str,

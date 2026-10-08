@@ -207,6 +207,7 @@ const customProxyTypes = [
   'ss',
   'ssr',
   'socks5',
+  'socks5s',
   'http',
   'vmess',
   'vless',
