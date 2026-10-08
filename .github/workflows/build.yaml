@@ -13,7 +13,9 @@ concurrency:
   cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/v') }}
 
 env:
-  IS_STABLE: ${{ !contains(github.ref, '-') }}
+  # The fork's tags carry a suffix (v0.8.99-socks5s.1), so the upstream
+  # "a dash means prerelease" rule would never publish anything here.
+  IS_STABLE: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v') }}
   FLUTTER_VERSION: '3.47.4'
   GO_VERSION: '1.26.4'
   NDK_VERSION: r28c
@@ -458,8 +460,11 @@ jobs:
           IS_STABLE: ${{ env.IS_STABLE }}
           TAG: ${{ github.ref_name }}
         run: |
+          # The fork's tags are not in changelog.json, so the tag lookup falls
+          # back to the newest recorded version instead of failing the release.
           target=()
-          if [[ "$IS_STABLE" == 'true' ]]; then
+          if [[ "$IS_STABLE" == 'true' ]] && \
+             dart run tool/changelog.dart render release --tag "$TAG" --out /dev/null 2>/dev/null; then
             target=(--tag "$TAG")
           else
             dart run tool/changelog.dart build --unreleased
