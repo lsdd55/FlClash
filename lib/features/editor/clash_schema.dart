@@ -532,9 +532,7 @@ const _proxyVariants = <String, Map<String, YamlSchema>>{
     'fingerprint': _str,
     'skip-cert-verify': _bool,
   },
-  'socks5s': {
-    'encryption': _str,
-  },
+  'socks5s': {'encryption': _str},
   'http': {
     'username': _str,
     'password': _str,

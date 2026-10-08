@@ -821,7 +821,12 @@ func handleSetupConfig(params *SetupParams) string {
 }
 
 func init() {
-	adapter.UrlTestHook = func(url string, name string, delay uint16) {
+	adapter.UrlTestHook = func(url string, name string, delay uint16, timedOut bool) {
+		// A probe whose context is done reports no delay, so the UI can tell a
+		// timeout apart from a node that answered slowly.
+		if timedOut {
+			delay = 0
+		}
 		sendMessage(Message{
 			Type: DelayMessage,
 			Data: &Delay{
