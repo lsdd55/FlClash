@@ -457,19 +457,16 @@ jobs:
       - name: Generate release notes
         shell: bash
         env:
-          IS_STABLE: ${{ env.IS_STABLE }}
           TAG: ${{ github.ref_name }}
         run: |
-          # The fork's tags are not in changelog.json, so the tag lookup falls
-          # back to the newest recorded version instead of failing the release.
-          target=()
-          if [[ "$IS_STABLE" == 'true' ]] && \
-             dart run tool/changelog.dart render release --tag "$TAG" --out /dev/null 2>/dev/null; then
-            target=(--tag "$TAG")
+          # The fork's tags are not in changelog.json, so rendering by tag 404s.
+          # Fall back to the newest recorded version; `build --unreleased` is not
+          # an option here, because the fork tags on top of an already-tagged base.
+          if dart run tool/changelog.dart render release --tag "$TAG" --out /dev/null 2>/dev/null; then
+            dart run tool/changelog.dart render release --tag "$TAG" --out release.md
           else
-            dart run tool/changelog.dart build --unreleased
+            dart run tool/changelog.dart render release --out release.md
           fi
-          dart run tool/changelog.dart render release "${target[@]}" --out release.md
 
       - name: Patch release.md
         run: |
